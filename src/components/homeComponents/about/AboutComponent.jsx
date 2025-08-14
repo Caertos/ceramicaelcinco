@@ -1,6 +1,6 @@
-import "./about.css";
+import "./aboutComponent.css";
 
-const About = () => {
+const AboutComponent = () => {
   return (
     <div className="about-container">
       <h2 className="section-title">¿Quienes somos?</h2>
@@ -23,4 +23,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutComponent;

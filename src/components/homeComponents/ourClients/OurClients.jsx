@@ -6,27 +6,27 @@ const OurClients = () => {
         {
             id: 1,
             name: "Nombre de la empresa",
-            logo: "logoEmpresa.svg",
+            logo: "/logoEmpresa.svg",
         },
                 {
             id: 2,
             name: "Nombre de la empresa",
-            logo: "logoEmpresa.svg",
+            logo: "/logoEmpresa.svg",
         },
                 {
             id: 3,
             name: "Nombre de la empresa",
-            logo: "logoEmpresa.svg",
+            logo: "/logoEmpresa.svg",
         },
                 {
             id: 4,
             name: "Nombre de la empresa",
-            logo: "logoEmpresa.svg",
+            logo: "/logoEmpresa.svg",
         },
                 {
             id: 5,
             name: "Nombre de la empresa",
-            logo: "logoEmpresa.svg",
+            logo: "/logoEmpresa.svg",
         },
     ];
 

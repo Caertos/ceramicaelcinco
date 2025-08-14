@@ -2,11 +2,12 @@
   font-family: Poppins, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0 auto;
-  width: 80%;
+  margin: 0;
+  padding: 0;
 }
 
 li {

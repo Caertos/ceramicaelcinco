@@ -1,7 +1,6 @@
 .about-container {
   display: flex;
   position: relative;
-  margin-top: 2vw;
   justify-content: center;
 }
 
@@ -15,9 +14,13 @@
 
 .about p {
   padding-top: 2vw;
+  align-content: center;
   text-align: right;
+  padding-left: 30%;
+  font-size: 1vw;
 }
 
 .about img {
     border-radius: 0 5px 5px 0;
+    width: 85%;
 }

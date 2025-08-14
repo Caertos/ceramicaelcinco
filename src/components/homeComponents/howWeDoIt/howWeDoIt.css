@@ -15,14 +15,22 @@
 }
 
 .how-we-do-it-content > :first-child {
-  padding-top: 70px;
+  padding-top: 120px;
+  padding-right: 1rem;
   border-right: solid 2px #b63c2e;
+  padding-left: 30%;
+}
+
+.how-we-do-it-content > :last-child {
+  padding-right: 30%;
 }
 
 .how-we-do-it-content p {
   position: relative;
-  margin-bottom: 100px;
-  padding: 0 25px;
+  margin: 15px;
+  margin-bottom: 6vw;
+  min-height: 130px;
+  align-content: center;
 }
 
 .how-we-do-it-content > :first-child p {
@@ -31,30 +39,30 @@
 
 .how-we-do-it-content div p span {
   position: absolute;
+  top: 50%;
   background-color: #b63c2e;
   border-radius: 100%;
-  min-height: 20px;
-  min-width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .how-we-do-it-content div p span::before {
   position: absolute;
   content: " ";
-  top: -5px;
-  left: -5px;
+  top: 50%;
+  left: 50%;
   background-color: transparent;
   border: solid 2px #b63c2e;
   border-radius: 100%;
   min-height: 27px;
   min-width: 27px;
+  transform: translate(-50%, -50%);
 }
 
 .how-we-do-it-content > :first-child p span {
-  bottom: 20px;
-  right: -11px;
+  transform: translate(110%, -35%);
 }
 
 .how-we-do-it-content > :last-child p span {
-  bottom: 20px;
-  left: -31px;
+  transform: translate(-230%, -40%);
 }

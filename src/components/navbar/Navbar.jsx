@@ -1,29 +1,21 @@
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 
 function Navbar() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const location = useLocation();
 
   const navItems = [
-    "Inicio",
-    "¿Quienes Somos?",
-    "Producto",
-    "¿Cómo lo hacemos?",
-    "Galería",
-    "Contáctanos"
+    { name: "Inicio", path: "/" },
+    { name: "¿Quienes Somos?", path: "/about" },
+    { name: "Producto", path: "/products" },
+    { name: "¿Cómo lo hacemos?", path: "/process" },
+    { name: "Galería", path: "/gallery" },
+    { name: "Contáctanos", path: "/contact" },
   ];
 
-  const handleClick = (index) => {
-    if (index !== navItems.length - 1) {
-      setActiveIndex(index);
-    }
-  };
-
-  const handleContactClick = () => {
-    // Comportamiento especial para el botón de contacto
-    // Por ejemplo, abrir un modal o redirigir
-    alert("Contacto");
-  };
+  const activeIndex = navItems.findIndex(
+    (item) => item.path === location.pathname
+  );
 
   return (
     <div className="navbar-container">
@@ -34,19 +26,12 @@ function Navbar() {
             const isContact = idx === navItems.length - 1;
             return (
               <li
-                key={item}
-                className={
-                  isContact
-                    ? "contact-button"
-                    : "nav-button" + (activeIndex === idx ? " active" : "")
-                }
-                onClick={
-                  isContact
-                    ? handleContactClick
-                    : () => handleClick(idx)
-                }
+                key={item.name}
+                className={`${isContact ? "contact-button" : "nav-button"} ${
+                  activeIndex === idx ? "active" : ""
+                }`}
               >
-                <a href="#">{item}</a>
+                <Link to={item.path}>{item.name}</Link>
               </li>
             );
           })}

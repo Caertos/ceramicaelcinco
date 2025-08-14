@@ -9,6 +9,7 @@
   font-size: 1vw;
   line-height: 2vw;
   border-bottom: 5px solid #b63c2e;
+  margin-top: 20px;
 
   @media screen and (max-width: 450px) {
     display: flex;
