@@ -1,4 +1,4 @@
-import PageContainer from "../../components/pageContainer/pageContainer";
+import PageContainer from "../../components/pageContainer/PageContainer";
 
 function ProductionProcess() {
   return (

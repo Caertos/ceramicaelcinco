@@ -1,0 +1,72 @@
+.section-title-contact {
+  position: absolute;
+  top: calc(-2vw - 20px);
+}
+
+.contact-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 60%;
+  align-items: center;
+}
+
+.lado-1 {
+  z-index: 1;
+  transform: translateX(10%);
+  flex: 1;
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 40%;
+  min-height: 37.45vw;
+}
+
+.lado-1 form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lado-1 form input,
+.lado-1 form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: none;
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+.lado-1 form input:focus,
+.lado-1 form textarea:focus {
+  outline: none;
+  border-color: #b63c2e;
+}
+
+.lado-1 form textarea {
+  height: clamp(100px, 30vw, 250px);
+}
+
+.lado-1 form button {
+  padding: clamp(10px, 2vw, 15px);
+  background-color: #b63c2e;
+  color: white;
+  font-size: clamp(12px, 2vw, 20px);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.lado-2 {
+  flex: 1;
+  padding: 20px;
+  max-width: 60%;
+  background-image: url("/contactImg.jpg");
+  background-size: cover;
+  background-position: right;
+  aspect-ratio: 8/10;
+  border-radius: 0 10px 10px 0;
+}

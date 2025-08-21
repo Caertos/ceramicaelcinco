@@ -1,7 +1,7 @@
-const Banner = () => {
+const Banner = ({ bannerImg }) => {
   return (
     <div className="banner">
-      <img src="/banner.png" alt="" />
+      <img src={bannerImg} alt="" />
     </div>
   );
 }
