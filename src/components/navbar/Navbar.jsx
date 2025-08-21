@@ -5,16 +5,16 @@ function Navbar() {
 
   const navItems = [
     { name: "Inicio", path: "/" },
-    { name: "¿Quienes Somos?", path: "/About" },
-    { name: "Producto", path: "/Products" },
-    { name: "¿Cómo lo hacemos?", path: "/Process" },
-    { name: "Galería", path: "/Gallery" },
-    { name: "Contáctanos", path: "/Contact" },
+    { name: "¿Quienes Somos?", path: "/about" },
+    { name: "Producto", path: "/products" },
+    { name: "¿Cómo lo hacemos?", path: "/process" },
+    { name: "Galería", path: "/gallery" },
+    { name: "Contáctanos", path: "/contact" },
   ];
 
   return (
     <div className="navbar-container">
-      <img className="logo" src="/LogoCEC.svg" alt="" />
+      <img className="logo" src="/LogoCEC.svg" alt="Logo Cerámica el Cinco" />
       <nav>
         <ul className="nav-list">
           {navItems.map((item, idx) => {
