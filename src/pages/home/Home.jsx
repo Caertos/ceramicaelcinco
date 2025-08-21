@@ -5,10 +5,10 @@ import HowWeDoIt from "../../components/homeComponents/howWeDoIt/HowWeDoIt";
 import OurClients from "../../components/homeComponents/ourClients/OurClients";
 import PageContainer from "../../components/pageContainer/PageContainer";
 
-function About() {
+function Home() {
   return (
     <>
-      <Banner bannerImg="/banner.png" />
+      <Banner bannerImg="/banner.png" bannerAlt={"Banner Ceramica el Cinco"} />
       <PageContainer>
         <AboutComponent />
         <ProductionLine />
@@ -19,4 +19,4 @@ function About() {
   );
 }
 
-export default About;
+export default Home;

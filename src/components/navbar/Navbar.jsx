@@ -1,21 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import "./navbar.css";
 
 function Navbar() {
-  const location = useLocation();
 
   const navItems = [
     { name: "Inicio", path: "/" },
-    { name: "¿Quienes Somos?", path: "/about" },
-    { name: "Producto", path: "/products" },
-    { name: "¿Cómo lo hacemos?", path: "/process" },
-    { name: "Galería", path: "/gallery" },
-    { name: "Contáctanos", path: "/contact" },
+    { name: "¿Quienes Somos?", path: "/About" },
+    { name: "Producto", path: "/Products" },
+    { name: "¿Cómo lo hacemos?", path: "/Process" },
+    { name: "Galería", path: "/Gallery" },
+    { name: "Contáctanos", path: "/Contact" },
   ];
-
-  const activeIndex = navItems.findIndex(
-    (item) => item.path === location.pathname
-  );
 
   return (
     <div className="navbar-container">
@@ -27,11 +22,9 @@ function Navbar() {
             return (
               <li
                 key={item.name}
-                className={`${isContact ? "contact-button" : "nav-button"} ${
-                  activeIndex === idx ? "active" : ""
-                }`}
+                className={`${isContact ? "contact-button" : "nav-button"}`}
               >
-                <Link to={item.path}>{item.name}</Link>
+                <NavLink to={item.path} className={({ isActive }) => (isActive ? "active" : "")}>{item.name}</NavLink>
               </li>
             );
           })}
