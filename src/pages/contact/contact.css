@@ -6,10 +6,8 @@
 .contact-container {
   position: relative;
   display: flex;
-  justify-content: space-between;
   margin-top: 20px;
   width: 60%;
-  align-items: center;
 }
 
 .lado-1 {
@@ -22,12 +20,20 @@
   padding: 20px;
   max-width: 40%;
   min-height: 37.45vw;
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    min-height: auto;
+    transform: translateX(0);
+    margin: 0 auto;
+  }
 }
 
 .lado-1 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 2vw;
 }
 
 .lado-1 form input,
@@ -58,6 +64,11 @@
   border-radius: 10px;
   cursor: pointer;
   width: 100%;
+  transition: 0.3s ease-out;
+}
+
+.lado-1 form button:hover {
+  background-color: #a32b22;
 }
 
 .lado-2 {
@@ -69,4 +80,8 @@
   background-position: right;
   aspect-ratio: 8/10;
   border-radius: 0 10px 10px 0;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }

@@ -1,0 +1,127 @@
+.production-container {
+  position: relative;
+  justify-content: center;
+  width: 80%;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.production-container .section-title {
+  transform: translateY(-15px);
+}
+
+.production-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  padding-top: 4vw;
+}
+
+.production-line .product-card img {
+  height: 50px;
+  width: auto;
+}
+
+.production-line .product-card {
+  position: relative;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  background-color: #fff;
+  min-height: 180px;
+  min-width: 150px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.production-line .product-card p {
+  position: absolute;
+  display: flex;
+  background-color: #b63c2e;
+  color: #fff;
+  border-radius: 5px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-transform: uppercase;
+  height: 50px;
+  font-size: 12px;
+  min-width: 200px;
+  bottom: 30px;
+}
+
+.production-line .product-card:hover img {
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* CATEGORIES CONTAINER */
+
+.categories-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 2vw 0 2vw 0;
+  border: solid blue 1px;
+  width: 100%;
+}
+
+/* PRODUCTION SECTION */
+
+.products-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-items: center;
+  height: 100vh;
+  border: red solid 1px;
+
+  @media screen and (max-width: 768px) {
+    height: 60.5vh;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 40vh;
+  }
+
+  @media screen and (max-width: 380px) {
+    height: 50vh;
+  }
+}
+
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #b63c2e;
+  width: 100%;
+  height: 100%;
+}
+
+.selection-container button {
+    border: none;
+    background-color: whitesmoke;
+    font-size: clamp(1vw, 10px, 16px);
+    min-height: 3vw;
+    margin-top: 1vw;
+}
+
+.selection-container button:focus {
+    background-color: #4a1e18;
+    color: whitesmoke;
+}
+
+
+.pdf-viewer-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdf-viewer-container iframe {
+    height: 100%;
+    width: 100%;
+}
