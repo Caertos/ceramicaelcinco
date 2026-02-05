@@ -162,11 +162,7 @@ npm run build
 - ✅ Arquitectura escalable y mantenible
 - ⚠️ Configuración de backend requiere setup adicional (ver documentación)
 
-## 📸 Screenshots
-
-*(Las capturas de pantalla han sido omitidas para proteger información del cliente)*
-
-## 🔗 Información Adicional
+##  Información Adicional
 
 **Desarrollado por**: [Tu Nombre]  
 **Tipo**: Proyecto Freelance / Enterprise Application  
