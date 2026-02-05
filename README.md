@@ -164,7 +164,7 @@ npm run build
 
 ##  Información Adicional
 
-**Desarrollado por**: [Tu Nombre]  
+**Desarrollado por**: Carlos Enrique Cochero Ramos  
 **Tipo**: Proyecto Freelance / Enterprise Application  
 **Estado**: En Producción  
 **Año**: 2024-2025
