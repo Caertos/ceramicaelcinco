@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://ceramicaselcinco.com/</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/LogoCEC_2025-2.webp</image:loc>
+      <image:title>Cerámica El Cinco</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Quiénes Somos -->
+  <url>
+    <loc>https://ceramicaselcinco.com/about</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/QuienesSomosBanner.webp</image:loc>
+      <image:title>Quiénes Somos - Cerámica El Cinco</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Productos -->
+  <url>
+    <loc>https://ceramicaselcinco.com/products</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/ProductosBanner.webp</image:loc>
+      <image:title>Productos - Cerámica El Cinco</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/ladrilloFachada.png</image:loc>
+      <image:title>Ladrillo de Fachada</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/ladrilloPerforacionVertical.png</image:loc>
+      <image:title>Ladrillo Perforación Vertical</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/ladrilloLevanteMuros.png</image:loc>
+      <image:title>Ladrillo Levante de Muros</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/bloquelon.png</image:loc>
+      <image:title>Bloquelón</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Proceso de Producción -->
+  <url>
+    <loc>https://ceramicaselcinco.com/process</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/HacemosBanner.webp</image:loc>
+      <image:title>Proceso de Producción</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Galería -->
+  <url>
+    <loc>https://ceramicaselcinco.com/gallery</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/galleryBanner.webp</image:loc>
+      <image:title>Galería - Cerámica El Cinco</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Contacto -->
+  <url>
+    <loc>https://ceramicaselcinco.com/contact</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ceramicaselcinco.com/contactBanner.webp</image:loc>
+      <image:title>Contacto - Cerámica El Cinco</image:title>
+    </image:image>
+  </url>
+  
+</urlset>

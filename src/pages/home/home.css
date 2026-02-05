@@ -1,0 +1,160 @@
+/* =============================================
+  HOME
+  Secciones: video hero (aspect-ratio), overlay oscuro, eslogan y CTAs primarias.
+  Mobile: Ajustes tipográficos y posicionamiento absoluto para mejorar legibilidad.
+============================================== */
+
+/* Hero: video y overlay */
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  z-index: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .video-banner {
+    height: 100vh;
+  }
+}
+
+.video-container {
+  position: relative;
+  padding: 0;
+}
+
+.video-container::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 99.4%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Eslogan principal */
+.slogan {
+  font-family: Tahoma, sans-serif;
+  position: relative;
+  color: var(--white);
+  font-size: calc(var(--fs-lg) + 20%);
+  font-weight: bolder;
+  line-height: 1;
+  z-index: 2;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 768px) {
+  .slogan {
+    font-size: var(--fs-lg);
+    position: absolute;
+    top: 25vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slogan {
+    font-size: var(--fs-md);
+  }
+}
+
+.slogan span {
+  font-size: calc(var(--fs-xxl) - 20%);
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 768px) {
+  .slogan span {
+    font-size: calc(var(--fs-xl) + 10%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slogan span {
+    font-size: var(--fs-xl);
+  }
+}
+
+/* Grupo de llamadas a la acción (CTAs) */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20vw;
+  left: 4vw;
+  z-index: 2;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .cta-group {
+    width: 100%;
+    align-items: center;
+    top: 20vw;
+    left: -20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cta-group {
+    left: 0;
+    text-align: center;
+  }
+}
+
+/* Contenedor horizontal de botones (desktop) */
+.cta-buttons {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 16px);
+}
+
+@media screen and (max-width: 768px) {
+  .cta-buttons {
+    position: absolute;
+    top: 35vh;
+  }
+}
+
+/* Botón base de CTA */
+.cta-btn {
+  position: relative;
+  text-transform: uppercase;
+  padding: clamp(10px, 1vw, 14px) clamp(16px, 1.6vw, 28px);
+  border-radius: 0;
+  border: 2px solid transparent;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  font-size: 80%;
+}
+
+/* Variante primaria (full) */
+.cta-primary {
+  position: relative;
+  background: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  transition: 0.3s ease-out;
+}
+
+/* Variante contorno (transparente) */
+.cta-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+  transition: 0.3s ease-out;
+}
+
+.cta-btn:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.cta-outline:hover {
+  background: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}

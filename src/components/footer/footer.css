@@ -1,0 +1,96 @@
+/* =============================
+   FOOTER (estilos generales)
+   Propósito: Disposición de 4 columnas (desktop), 2 columnas (tablet) y
+   stack vertical (mobile). Incluye logo, listas de enlaces, datos de
+   contacto y redes sociales.
+   Elementos:
+     - .footer-logo (logo principal)
+     - .social-media (contenedor de iconos)
+   ============================= */
+.footer {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2vw 5vw;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  text-align: left;
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 2vw;
+  border-bottom: 5px solid var(--primary-color);
+}
+
+/* CONTENEDORES INTERNOS (cada columna) */
+.footer div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* REDES SOCIALES (iconos) */
+.footer .social-media {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 150px;
+}
+
+/* LOGO (footer) */
+.footer .footer-logo {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  transition: opacity 0.3s ease;
+}
+
+/* TÍTULOS DE SECCIÓN */
+.footer h3 {
+  color: var(--white);
+  margin-bottom: var(--spacing-sm, 10px);
+  text-align: center;
+}
+
+/* LISTAS (enlaces / datos) */
+.footer ul {
+  position: relative;
+  display: flex;
+  padding: 2vw;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--spacing-xs, 10px);
+  text-align: center;
+}
+
+.footer ul li span {
+  color: var(--accent-color);
+}
+
+/* =============================
+   RESPONSIVE (adaptaciones)
+   ============================= */
+@media screen and (max-width: 768px) {
+  .footer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg, 20px);
+    text-align: center;
+  }
+
+  .footer li {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding: 5vw;
+    gap: var(--spacing-xl, 30px);
+    text-align: center;
+  }
+
+  .footer div {
+    align-items: center;
+  }
+}

@@ -1,0 +1,67 @@
+/* =============================================================
+  ADMIN: Productos - Tabs categorías
+  Resumen: Estilos para selector de categorías de productos en panel admin.
+  Notas: Unificación de colores con variables institucionales.
+  ============================================================= */
+.tabs-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-size: var(--fs-sm);
+}
+
+.sel-cat-btn {
+  background: transparent;
+  color: var(--secondary-color);
+  width: fit-content;
+  border-radius: 25px;
+  padding: 0.3rem 0.7rem;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+  font-size: var(--fs-sm);
+  border: 1px solid
+    color-mix(in srgb, var(--secondary-color) 40%, var(--primary-color) 10%);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Estados */
+.sel-cat-btn.selected {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color),
+    color-mix(in srgb, var(--primary-color) 35%, var(--secondary-color))
+  );
+  color: var(--white);
+  border-color: color-mix(
+    in srgb,
+    var(--primary-color) 50%,
+    var(--secondary-color)
+  );
+}
+
+/* Ocultar input file nativo dentro del label de Cambiar Ficha */
+.visualmente-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+.sel-cat-btn:not(.selected):hover {
+  background: color-mix(in srgb, var(--secondary-color) 12%, transparent);
+  color: color-mix(
+    in srgb,
+    var(--secondary-color) 75%,
+    var(--primary-color) 25%
+  );
+}
+
+.sel-cat-btn:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}

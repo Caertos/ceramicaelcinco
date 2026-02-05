@@ -1,0 +1,82 @@
+/* =============================
+   HOME: Cómo lo hacemos (timeline)
+   ============================= */
+/* Variables locales */
+:root {
+  --timeline-dot-size: 20px;
+  --timeline-ring-size: 27px;
+}
+
+/* Contenedor principal */
+.how-we-do-it-container {
+  display: flex;
+  position: relative;
+  margin-top: 2vw;
+  justify-content: center;
+}
+
+/* Grid de contenido */
+.how-we-do-it-content {
+  position: relative;
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg, 20px);
+  padding: var(--spacing-lg, 20px);
+}
+
+/* Columna izquierda */
+.how-we-do-it-content > :first-child {
+  padding: 120px 1rem 0 30%;
+  border-right: solid 2px var(--primary-color);
+}
+
+.how-we-do-it-content > :first-child p {
+  text-align: right;
+}
+
+.how-we-do-it-content > :first-child p span {
+  transform: translate(110%, -35%);
+}
+
+/* Columna derecha */
+.how-we-do-it-content > :last-child {
+  padding-right: 30%;
+}
+
+.how-we-do-it-content > :last-child p span {
+  transform: translate(-230%, -40%);
+}
+
+/* Párrafos comunes */
+.how-we-do-it-content p {
+  position: relative;
+  margin: 15px;
+  margin-bottom: 6vw;
+  min-height: 130px;
+  align-content: center;
+  font-size: var(--fs-md);
+}
+
+/* Puntos de la línea de tiempo */
+.how-we-do-it-content div p span {
+  position: absolute;
+  top: 50%;
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.how-we-do-it-content div p span::before {
+  position: absolute;
+  content: " ";
+  top: 50%;
+  left: 50%;
+  width: var(--timeline-ring-size);
+  height: var(--timeline-ring-size);
+  background-color: transparent;
+  border: solid 2px var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}

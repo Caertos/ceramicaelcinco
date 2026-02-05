@@ -1,0 +1,167 @@
+/* =============================================
+  ABOUT (Misión, Visión, Valores)
+  Secciones con grid adaptable -> column layout en pantallas pequeñas.
+  Incluye animaciones escalonadas (IntersectionObserver en componente) y soporte reduce-motion.
+============================================== */
+.about-grid {
+  gap: 2vw;
+}
+
+.Mision {
+  margin: 0;
+}
+
+.Mision img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.Vision {
+  margin: 0;
+  height: fit-content;
+}
+
+.Vision img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.Vision article{
+  margin-bottom: 50px;
+}
+
+.NuestrosValores {
+  grid-area: 2/1/3/3;
+  display: flex;
+  margin: 0;
+}
+
+.NuestrosValores img {
+  width: 50%;
+  transform: translateY(-10%);
+  object-fit: cover;
+}
+
+.NuestrosValores article {
+  transform: translateY(-4vw);
+}
+
+@media screen and (max-width: 1330px) {
+  .NuestrosValores img {
+    transform: translateY(0%);
+  }
+}
+
+.about-grid article {
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-item__title {
+  font-size: var(--fs-md);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+.about-item__body {
+  margin: 0;
+}
+
+/* =============================
+   Responsive: una sola columna en pantallas pequeñas
+   ============================= */
+@media screen and (max-width: 1100px) {
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-grid > div {
+    /* Cada grupo (Mision, Vision, NuestrosValores) */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-grid article {
+    margin-bottom: 2vw;
+  }
+
+  /* Ajustes de VALORES: quitar grid-area y apilar */
+  .NuestrosValores {
+    grid-area: auto;
+    flex-direction: column;
+  }
+  .NuestrosValores img {
+    width: 100%;
+    transform: none;
+    margin-top: 8px;
+    aspect-ratio: 4/3;
+  }
+
+  /* Reordenar VISIÓN para que el texto vaya primero y luego la imagen */
+  .Vision article {
+    order: 1;
+  }
+  .Vision img {
+    order: 2;
+  }
+
+  /* Espaciado consistente imagen debajo de texto en Misión */
+  .Mision img {
+    margin-top: 8px;
+  }
+
+  /* Opcional: reducir padding interno para móviles */
+  .about-grid article {
+    padding: 4vw 2vw 0 2vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+/* =============================
+   Animaciones de aparición
+   ============================= */
+.reveal-base {
+  opacity: 0;
+  transform: translateY(26px);
+  will-change: opacity, transform;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-instant {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+/* Pequeño escalonado basado en nth-child sin romper el layout */
+.about-grid > *:nth-child(2) {
+  transition-delay: 60ms;
+}
+.about-grid > *:nth-child(3) {
+  transition-delay: 120ms;
+}
+.about-grid > *:nth-child(4) {
+  transition-delay: 180ms;
+}
+.about-grid > *:nth-child(5) {
+  transition-delay: 240ms;
+}
+.about-grid > *:nth-child(6) {
+  transition-delay: 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-base {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

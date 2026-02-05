@@ -1,0 +1,104 @@
+/* =============================================
+   ADMIN: UsersSection
+   Resumen: Estilos para tabla y formularios de gestión de usuarios.
+   Notas: Colores unificados usando variables institucionales y mezclas.
+   ============================================= */
+
+.users-section {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tabla de usuarios */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  background: var(--white);
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+}
+
+.users-table th {
+  background: color-mix(in srgb, var(--primary-color) 6%, var(--white));
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Grid de formularios */
+.users-forms-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Tarjetas de formulario */
+.card-form {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-form h3 {
+  margin: 0 0 0.5rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.card-form label {
+  font-size: var(--fs-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.card-form input,
+.card-form select {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-xs);
+  background: color-mix(in srgb, var(--white) 98%, var(--primary-color) 2%);
+  transition: border-color .2s ease, background-color .2s ease;
+}
+
+.card-form input:focus,
+.card-form select:focus {
+  outline: var(--focus-outline);
+  outline-offset: 1px;
+  border-color: var(--primary-color);
+  background: color-mix(in srgb, var(--white) 92%, var(--primary-color) 8%);
+}
+
+.card-form button {
+  margin-top: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Mantener fondos claros para legibilidad incluso en dark */
+  .users-table { background: color-mix(in srgb, var(--white) 92%, var(--primary-color) 8%); }
+  .users-table th { background: color-mix(in srgb, var(--white) 88%, var(--primary-color) 12%); color: var(--text-color); }
+  .users-table td,
+  .users-table th { border-color: color-mix(in srgb, var(--border-color) 80%, var(--primary-color) 10%); }
+  .card-form { background: color-mix(in srgb, var(--white) 97%, var(--primary-color) 3%); border-color: var(--border-color); box-shadow: var(--shadow-sm); }
+  .card-form h3 { color: var(--secondary-color); }
+  .card-form input,
+  .card-form select { background: color-mix(in srgb, var(--white) 96%, var(--primary-color) 4%); border-color: var(--border-color); color: var(--text-color); }
+  .card-form input:focus,
+  .card-form select:focus { background: color-mix(in srgb, var(--white) 92%, var(--primary-color) 8%); }
+}

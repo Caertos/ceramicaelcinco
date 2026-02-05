@@ -1,0 +1,57 @@
+/* =============================================
+  LOGIN
+  Estructura: contenedor centrado + tarjeta con campos y mensajes de error.
+  Usa tokens de espaciado y colores para mantener consistencia.
+============================================== */
+.login-page {
+  min-height: calc(100vh - 0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background: #f7f5f4;
+}
+
+/* Tarjeta/formulario */
+.login-card {
+  width: min(92vw, 360px);
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+}
+
+/* Título y errores */
+.login-title {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--secondary-color);
+}
+
+.login-error { color: var(--form-error-text); background: var(--form-error-bg); border: 1px solid var(--form-error-border); border-radius: var(--border-radius); padding: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
+
+/* Campos del formulario */
+.login-field {
+  margin-bottom: var(--spacing-md);
+}
+.login-field label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--text-color);
+}
+.login-field input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-md);
+}
+
+/* Acciones */
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Botones: estilos base centralizados en styles/buttons.css */

@@ -1,0 +1,42 @@
+/* =============================
+  TOKENS (diseño complementario)
+  Descripción: Variables extendidas (estados, feedback, transiciones)
+  sobre la base declarada en index.css (colores primarios, tipografía).
+  Convención: --<grupo>-<nombre>-<estado?>
+  Notas:
+    - No incluir valores específicos de un componente.
+    - Prefijo gray-* neutros, danger-* críticos, success-* confirmaciones.
+  ============================= */
+:root {
+  /* --- Escala Neutra / Auxiliares --- */
+  --gray-50: #f9f9f9;
+  --gray-100: #f5f5f5;
+  --gray-400: #6c757d; /* Texto secundario */
+  --gray-500: #5a6268; /* Hover gris medio */
+
+  /* --- Derivados de marca (hovers) --- */
+  --brand-primary-hover: #9f362a;
+  --brand-secondary-hover: #3e1914;
+
+  /* --- Estados de Peligro / Crítico --- */
+  --danger-base: #dc3545;
+  --danger-hover: #c82333;
+
+  /* --- Feedback / Mensajes --- */
+  --success-bg: #d4edda;
+  --success-text: #155724;
+  --success-border: #c3e6cb;
+  --error-bg: #f8d7da;
+  --error-text: #721c24;
+  --error-border: #f5c6cb;
+  --form-error-text: #b00020;
+  --form-error-bg: #fde7e9;
+  --form-error-border: #f5c6cb;
+
+  /* --- Transiciones --- */
+  --transition-base: 0.3s ease-out;
+  --transition-fast: 0.2s ease;
+
+  /* --- Accesibilidad (Foco) --- */
+  --focus-outline: 2px solid var(--primary-color);
+}

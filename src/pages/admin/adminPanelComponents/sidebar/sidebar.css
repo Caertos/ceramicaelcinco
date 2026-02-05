@@ -1,0 +1,44 @@
+/* =============================
+   ADMIN: SIDEBAR
+   ============================= */
+.admin-sidebar {
+  width: 15vw;
+  background: var(--secondary-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar ul {
+    width: 100%;
+  list-style: none;
+  margin: 0;
+  margin-top: 6vw;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4vw;
+}
+
+/* Botones del menú */
+.admin-sidebar li button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0.55rem 0.6rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-size: var(--fs-sm);
+  transition: background-color .2s ease, color .2s ease;
+}
+.admin-sidebar li.active-sidebar button,
+.admin-sidebar li button:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+.admin-sidebar li button:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}

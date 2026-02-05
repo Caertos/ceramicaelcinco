@@ -1,0 +1,89 @@
+/* =============================
+   HOME: Nuestros clientes
+   ============================= */
+.our-clients-container {
+  padding: var(--spacing-xl) 0;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Contenedor principal de la animación */
+.clients-marquee {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+}
+
+/* Pista que se desplaza */
+.clients-track {
+  display: flex;
+  width: calc(max-content);
+  animation: clients-scroll 25s linear infinite;
+}
+
+/* Un grupo de logos (lista original duplicada) */
+.clients-group {
+  display: flex;
+  gap: clamp(2rem, 4vw, 5rem);
+  padding: 0 clamp(1rem, 2vw, 2rem);
+}
+
+.client-item {
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(0) saturate(100%) contrast(100%);
+  transition: filter 0.5s ease, transform 0.5s ease;
+  will-change: filter, transform;
+}
+
+.client-item .logoImg {
+  height: clamp(100px, 15vw, 250px);
+  width: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Recupera color y un ligero scale al hover (solo el item, no detiene animación) */
+.client-item:hover {
+  filter: none;
+}
+
+/* Accesibilidad: si usuario prefiere reducir movimiento, detenemos animación */
+@media (prefers-reduced-motion: reduce) {
+  .clients-track {
+    animation: none;
+  }
+}
+
+/* Pausa opcional al hover de toda la pista (comentado, habilitar si se quiere) */
+/* .clients-marquee:hover .clients-track { animation-play-state: paused; }
+ */
+@keyframes clients-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

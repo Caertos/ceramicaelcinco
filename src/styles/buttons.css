@@ -1,0 +1,99 @@
+/* =============================
+   BOTONES (estilos base y variantes)
+   Resumen: Reglas reutilizables para acciones primarias, secundarias,
+            estados de peligro y CTA de la portada.
+   Diccionario:
+     - CTA: Call To Action, botón prominente para conversión.
+     - danger: Variante para acciones destructivas.
+   ============================= */
+
+/* ------------------------------
+   BASE (.btn)
+   Intención: núcleo visual y de accesibilidad para cualquier botón.
+   ------------------------------ */
+.btn {
+  padding: 10px 16px; /* Altura y ancho táctil consistente */
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, opacity 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espacio entre icono y texto */
+}
+
+/* ------------------------------
+   ESTADO: deshabilitado
+   ------------------------------ */
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ------------------------------
+   VARIANTE: primaria (.btn-primary)
+   Uso: acciones principales (enviar formulario / confirmar)
+   ------------------------------ */
+.btn-primary { background: var(--primary-color); color: var(--white); }
+.btn-primary:hover { background: var(--brand-primary-hover); }
+
+/* ------------------------------
+   VARIANTE: secundaria (.btn-secondary)
+   Uso: acciones de soporte menos prominentes
+   ------------------------------ */
+.btn-secondary { background: var(--primary-color); color: var(--white); border: none; }
+.btn-secondary:hover { background: var(--secondary-color); }
+.btn-secondary:focus-visible { outline: var(--focus-outline); outline-offset: 2px; }
+
+/* ------------------------------
+   VARIANTE: neutral (.btn-neutral)
+   Uso: fallback previo mantenido por compatibilidad visual
+   ------------------------------ */
+.btn-neutral { background: var(--primary-color); color: var(--white); }
+.btn-neutral:hover { background: var(--brand-secondary-hover); }
+
+/* ------------------------------
+   VARIANTE: peligro (.btn-danger)
+   Uso: acciones destructivas (eliminar, remover)
+   ------------------------------ */
+.btn-danger { background: var(--danger-base); color: var(--white); }
+.btn-danger:hover { background: var(--danger-hover); }
+
+/* ------------------------------
+   CTA HOME (.btn.cta-btn, .cta-primary, .cta-outline)
+   Uso: llamadas a la acción destacadas en portada
+   ------------------------------ */
+.btn.cta-btn {
+  position: relative;
+  text-transform: uppercase;
+  padding: clamp(10px, 1vw, 14px) clamp(16px, 1.6vw, 28px);
+  border-radius: 0;
+  border: 2px solid transparent;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  font-size: 80%;
+  background: transparent;
+  color: var(--white);
+  transition: var(--transition-base);
+}
+.btn.cta-btn.cta-primary { background: var(--primary-color); color: var(--white); border-color: var(--primary-color); }
+.btn.cta-btn.cta-outline { background: transparent; color: var(--white); border-color: var(--white); }
+.btn.cta-btn:hover { background-color: var(--white); color: var(--primary-color); }
+.btn.cta-btn.cta-outline:hover { background: transparent; color: var(--primary-color); border-color: var(--primary-color); }
+
+/* ------------------------------
+   UTILIDADES DE TAMAÑO (.btn-sm / .btn-lg)
+   Uso: variantes compactas o destacadas puntuales
+   ------------------------------ */
+.btn-sm { padding: 6px 12px; font-size: 90%; }
+.btn-lg { padding: 14px 22px; font-size: 110%; }
+
+/* ------------------------------
+   PREFERENCIA: reduce motion
+   ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn.cta-btn { transition: none; }
+}

@@ -1,0 +1,108 @@
+/* Contacto: grid principal */
+.contact-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  width: 100%;
+  gap: 0;
+}
+
+/* Título unificado en App.css */
+
+/* Columna formulario */
+.lado-1 {
+  position: relative;
+  z-index: 1;
+  background-color: var(--white);
+  border: 1px solid var(--border-color, #ccc);
+  width: 100%;
+  padding: 0;
+}
+
+/* Form contenedor */
+.lado-1 form {
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 10px);
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+/* Inputs / textarea */
+.lado-1 form input,
+.lado-1 form textarea {
+  padding: var(--spacing-sm, 10px);
+  font-size: var(--fs-md);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: var(--border-radius);
+  transition: border-color 0.3s ease;
+  width: 95%;
+  resize: none;
+}
+.lado-1 form input:focus,
+.lado-1 form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+.lado-1 form textarea {
+  height: clamp(100px, 30vw, 250px);
+}
+/* Botón submit */
+.lado-1 form button {
+  width: 100%;
+  padding: clamp(10px, 2vw, 15px);
+  font-size: var(--fs-lg);
+  color: var(--white);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+}
+.lado-1 form button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+
+/* Columna imagen */
+.lado-2 {
+  padding: 0;
+  width: 100%;
+}
+
+.lado-2 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Directorio */
+.directorio-grid {
+  grid-column: 1 / span 2;
+  padding-top: 2vw;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .lado-1 {
+    width: 100%;
+  }
+
+  .lado-2 {
+    display: none;
+  }
+
+  .directorio-grid {
+    grid-column: 1;
+    grid-row: 2;
+    padding-top: 4vw;
+  }
+}

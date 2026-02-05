@@ -1,0 +1,420 @@
+/* =============================================================
+  MINI SLIDE (Layout general contenedor principal)
+  Contiene bloque de título (lhs-block) + tarjeta con carrusel (slide-card)
+  ============================================================= */
+.mini-hero-slider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-height: clamp(280px, 36vw, 420px);
+  margin-block: clamp(1.5rem, 5vw, 4rem);
+  font-family: inherit;
+  isolation: isolate;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+/* Bloque de título lateral (desktop) / Franja superior (mobile) */
+.lhs-block {
+  /* clamp(min, preferred, max) -> el orden anterior estaba invertido y podía invalidar la regla */
+  flex: 0 0 clamp(320px, 32%, 600px);
+  display: flex;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
+  color: #fff;
+  min-width: clamp(220px, 40vw, 500px);
+  width: 100%;
+  position: relative;
+}
+
+/* Título principal (multi-línea configurable) */
+.lhs-title {
+  font-size: clamp(1.65rem, 3.3vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.lhs-title span:last-child br {
+  display: none;
+}
+
+.title-line1 {
+  font-size: var(--fs-xxl);
+  font-weight: 400;
+}
+
+
+/* Wrapper de slides: posiciona la pila absoluta y controla altura mínima */
+.slides-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: clamp(180px, 18vw, 230px);
+}
+
+/* Items de slide en modo "stack" con transición */
+.slides-wrapper:not([data-empty="true"]) {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Slide individual (apilado absoluto + transición fade/translate) */
+.slide-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: clamp(1rem, 2.2vw, 2rem);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  padding-right: clamp(2.2rem, 4vw, 3rem); /* espacio para botones */
+  background: #fff; /* asegurar fondo sólido en fade */
+}
+.slide-item.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  position: absolute;
+}
+
+/* Cuando no hay slides (placeholder) mantener flujo normal */
+/* Estado placeholder sin slides reales */
+.slides-wrapper[data-empty="true"] {
+  display: block;
+}
+
+/* Tarjeta del carrusel (contenedor de imagen + texto + controles) */
+.slide-card {
+  background: #fff;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.18);
+  margin-left: clamp(-80px, -8vw, -72px); /* superposición sobre bloque */
+  align-self: center;
+  border: 1px solid #e5e5e5;
+  padding: clamp(0.9rem, 1.8vw, 1.35rem) clamp(1.1rem, 2.1vw, 1.85rem);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: margin-left 0.4s ease, padding 0.3s ease;
+  box-sizing: border-box; /* evita que padding+border ensanchen y generen overflow */
+}
+
+/* Contenedor de imagen: mantiene aspecto y recorte (cover) */
+.slide-img-box {
+  flex: 0 0 var(--img-width, 240px);
+  max-width: 100%;
+  height: 100%;
+  background: transparent; /* sin fondo oscuro */
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  position: relative;
+  box-shadow: none; /* quitar sombra local, se mantiene la de la card */
+  padding: 0; /* sin marco interno */
+}
+.slide-img-box img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* llena el contenedor, sin bordes visibles */
+}
+/* Placeholder de imagen en ausencia de recurso */
+.img-ph {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #444,
+    #444 10px,
+    #3a3a3a 10px,
+    #3a3a3a 20px
+  );
+  animation: phPulse 2s infinite linear;
+}
+@keyframes phPulse {
+  from {
+    filter: brightness(0.85);
+  }
+  50% {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(0.85);
+  }
+}
+
+/* Contenedor texto del slide */
+.slide-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.slide-text p {
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1.25;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Controles de navegación (prev/next) */
+.nav-btns {
+  position: absolute;
+  bottom: clamp(0.6rem, 1.2vw, 1rem);
+  right: clamp(0.6rem, 1.2vw, 1rem);
+  display: flex;
+  gap: 0.6rem;
+}
+.nav-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  cursor: pointer;
+  background: var(--primary-color, #9d372d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: filter 0.25s, transform 0.25s;
+  color: #fff;
+}
+.nav-btn::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  display: block;
+}
+.nav-btn.prev::before {
+  transform: rotate(-135deg);
+}
+.nav-btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+.nav-btn:hover {
+  filter: brightness(1.1);
+}
+.nav-btn:active {
+  transform: scale(0.92);
+}
+
+/* Placeholder textual (skeleton) cuando no hay slides */
+.slides-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+.fake-row {
+  height: 18px;
+  background: #ececec;
+  border-radius: 4px;
+  animation: shimmer 1.8s infinite linear;
+}
+.fake-row.short {
+  width: 60%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -200px 0;
+  }
+  to {
+    background-position: 200px 0;
+  }
+}
+
+/* =============================================================
+  BREAKPOINTS / RESPONSIVE
+  Escalado y ajustes progresivos (layout horizontal -> columna ≤880px)
+  ============================================================= */
+@media (max-width: 1180px) {
+  .lhs-block {
+    flex-basis: clamp(240px, 30%, 360px);
+  }
+  .slide-card {
+    margin-left: clamp(-100px, -7vw, -60px);
+  }
+  .slide-img-box {
+    flex: 0 0 220px;
+  }
+  .slide-text p {
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  }
+}
+
+@media (max-width: 960px) {
+  .lhs-block {
+    flex-basis: clamp(210px, 33%, 320px);
+    padding: clamp(1.2rem, 3.2vw, 2.2rem);
+  }
+  .lhs-title {
+    font-size: clamp(1.55rem, 3vw, 2.7rem);
+  }
+  .slide-card {
+    margin-left: clamp(-84px, -6vw, -52px);
+  }
+  .slide-img-box {
+    flex: 0 0 200px;
+  }
+  .slide-item {
+    gap: clamp(0.9rem, 1.8vw, 1.8rem);
+    padding-right: clamp(2rem, 3.2vw, 2.8rem);
+  }
+}
+
+/* Layout columna y compactación de título / tarjeta (≤880px) */
+@media (max-width: 880px) {
+  .mini-hero-slider {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+    padding-inline: 0;
+  }
+  .lhs-block {
+    flex: none;
+    padding: clamp(0.75rem, 2.5vw, 1rem) clamp(0.9rem, 2.5vw, 1.2rem);
+    display: block;
+    background: var(--primary-color, #9d372d);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  .lhs-title {
+    font-size: clamp(1.15rem, 4.6vw, 1.65rem); /* más compacto para caber */
+    line-height: 1.12;
+    letter-spacing: .5px;
+    margin: 0;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    word-break: break-word; /* por si alguna palabra larga */
+    display: block;
+    width: 100%;
+  }
+  /* Mostrar los <br> nuevamente para permitir dos líneas y evitar concatenar palabras */
+  .lhs-title span br { display: inline; }
+  .slide-card {
+    margin-left: 0; /* sin solapamiento */
+    width: 100% !important;
+    padding: clamp(0.75rem, 2.4vw, 1rem) clamp(0.85rem, 2.6vw, 1.2rem);
+    margin-inline: clamp(0.4rem, 3vw, 1.25rem); /* margen lateral para que no toque bordes */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .slide-item {
+    gap: clamp(0.75rem, 2.4vw, 1.25rem);
+    padding-right: clamp(2.2rem, 4vw, 2.4rem);
+  }
+  .slide-img-box {
+    flex: 0 0 180px;
+  }
+  .slide-text p {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+  }
+  .nav-btns {
+    bottom: clamp(0.4rem, 2vw, 0.7rem);
+    right: clamp(0.4rem, 2vw, 0.7rem);
+  }
+}
+
+@media (max-width: 820px) {
+  .lhs-block {
+    flex-basis: clamp(190px, 36%, 300px);
+  }
+  .slide-card { margin-left: 0; margin-inline: clamp(0.4rem, 3vw, 1.25rem); max-width: calc(100% - 2 * clamp(0.4rem, 3vw, 1.25rem)); }
+  .slide-img-box {
+    flex: 0 0 180px;
+  }
+  .slide-text p {
+    font-size: clamp(0.85rem, 1.9vw, 1rem);
+  }
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .lhs-block {
+    flex-basis: clamp(170px, 40%, 260px);
+    padding: clamp(1rem, 2.8vw, 1.8rem);
+  }
+  .lhs-title {
+    font-size: clamp(1.35rem, 4vw, 2.2rem);
+  }
+  .slide-card { margin-left: 0; margin-inline: clamp(0.5rem, 4vw, 1.4rem); max-width: calc(100% - 2 * clamp(0.5rem, 4vw, 1.4rem)); }
+  .slide-img-box {
+    flex: 0 0 160px;
+  }
+  .slide-item {
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+  }
+  .slide-text p {
+    font-size: clamp(0.8rem, 2.6vw, 0.95rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .mini-hero-slider {
+    min-height: unset;
+  }
+  .lhs-block {
+    flex-basis: clamp(150px, 44%, 220px);
+  }
+  .slide-card { margin-left: 0; margin-inline: clamp(0.5rem, 5vw, 1.5rem); max-width: calc(100% - 2 * clamp(0.5rem, 5vw, 1.5rem)); }
+  .slide-img-box {
+    flex: 0 0 140px !important;
+  }
+  .slide-text p {
+    font-size: clamp(0.78rem, 3vw, 0.88rem);
+  }
+  .nav-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 460px) {
+  .lhs-block {
+    flex-basis: clamp(130px, 46%, 200px);
+    padding: 0.9rem 0.8rem;
+  }
+  .lhs-title {
+    font-size: clamp(1.15rem, 4.8vw, 1.7rem);
+  }
+  .slide-card { margin-left: 0; margin-inline: clamp(0.6rem, 6vw, 1.6rem); max-width: calc(100% - 2 * clamp(0.6rem, 6vw, 1.6rem)); }
+  .slide-img-box {
+    flex: 0 0 120px !important;
+  }
+  .slide-text p {
+    font-size: clamp(0.72rem, 3.4vw, 0.82rem);
+  }
+  .nav-btns {
+    gap: 0.4rem;
+  }
+  .nav-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Salvaguarda contra desbordes residuales por sub-píxeles en móviles */
+@media (max-width: 880px) {
+  body { overflow-x: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-item {
+    transition: none;
+  }
+}

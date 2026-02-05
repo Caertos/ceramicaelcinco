@@ -1,0 +1,221 @@
+/* =============================
+   NAVBAR (estilos generales)
+   Propósito: Barra principal de navegación (desktop + móvil) con panel
+   lateral deslizable, overlay y animaciones de hamburguesa.
+   Estructura:
+     - .logo (imagen principal)
+     - .nav-list (contenedor enlaces)
+     - .nav-button / .contact-button (variantes de ítems)
+     - .menu-toggle (botón hamburguesa)
+     - .nav-menu (contenedor móvil lateral)
+   Accesibilidad: uso de focus-visible, overlay para cierre por click exterior
+   y animaciones respetuosas (reduce-motion heredado si se define global).
+   ============================= */
+
+/* LOGO (imagen principal) */
+
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 4vw;
+  width: calc(40px + 7vw);
+  z-index: var(--z-navbar);
+}
+
+/* CONTENEDOR NAV PRINCIPAL */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* BOTÓN DE CIERRE (X) oculto desktop */
+.close-menu-button { display: none; }
+
+/* OVERLAY (oscurece fondo cuando menú móvil abierto) */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(1px);
+  z-index: calc(var(--z-navbar) - 1);
+  animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* LISTA DE ENLACES (desktop) */
+.nav-list {
+  position: absolute;
+  top: 1vw;
+  right: 5vw;
+  width: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: var(--primary-color) solid 1px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+  max-height: var(--button-height);
+  z-index: var(--z-navbar);
+}
+
+/* ÍTEM DE NAVEGACIÓN BASE */
+.nav-button { background-color: transparent; transition: var(--transition-base); }
+
+/* ÍTEM CTA CONTACTO */
+.contact-button { background-color: var(--primary-color); }
+
+/* ENLACES DENTRO DE ÍTEMS */
+.nav-button a, .contact-button a { display: flex; align-items: center; height: var(--button-height); padding: 0 clamp(6px, 1vw, 12px); transition: var(--transition-base); }
+
+/* ESTADO ACTIVO */
+.active {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  color: var(--secondary-color);
+}
+
+.contact-button .active {
+  min-height: var(--button-height);
+}
+
+/* =============================
+   MENÚ MÓVIL (hamburguesa + panel lateral)
+   ============================= */
+/* BOTÓN HAMBURGUESA */
+.menu-toggle {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: var(--z-navbar);
+}
+
+/* LÍNEAS HAMBURGUESA */
+.menu-toggle .bar { width: 100%; height: 3px; background-color: var(--primary-color); transition: all .3s ease-in-out; }
+
+/* ESTADO OPEN (transformaciones a X) */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 950px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* PANEL LATERAL (slide-in) */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--white);
+    padding-top: 80px;
+    transition: 0.3s ease-in-out;
+    box-shadow: var(--shadow-md);
+    z-index: var(--z-navbar);
+  }
+
+  .close-menu-button {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: background .2s ease, opacity var(--transition-fast);
+  }
+
+  .close-menu-button:hover,
+  .close-menu-button:focus-visible {
+    background: rgba(0,0,0,0.05);
+    outline: none;
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  /* Botón de cierre visible solo cuando el menú está abierto (se monta en DOM, pero añadimos animación futura) */
+  .close-menu-button { opacity: 1; }
+  .nav-menu:not(.open) .close-menu-button { opacity: 0; pointer-events: none; }
+
+  .nav-menu:focus-visible {
+    outline: none;
+  }
+
+  /* LISTA EN MÓVIL (columna) */
+  .nav-list {
+    position: static;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background: none;
+    padding: 20px;
+    max-height: none;
+    border: none;
+  }
+
+  /* ÍTEMS RESPONSIVE (mobile) */
+  .nav-button, .contact-button { color: var(--secondary-color); width: 100%; margin: 10px 0; text-align: center; position: static; }
+
+  .contact-button {
+    color: var(--white);
+  }
+
+  .nav-button a,
+  .contact-button a {
+    justify-content: center;
+    padding: 15px;
+    height: auto;
+  }
+
+  .contact-button {
+    background-color: var(--secondary-color);
+    margin-top: 20px;
+  }
+
+  .active {
+    min-height: auto;
+    font-weight: bolder;
+  }
+
+  .contact-button .active {
+    color: var(--white);
+    background-color: var(--secondary-color);
+  }
+}

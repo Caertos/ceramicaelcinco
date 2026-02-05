@@ -1,0 +1,36 @@
+{
+  "name": "Cerámica El Cinco",
+  "short_name": "CEC",
+  "description": "Fabricantes de ladrillos, bloques y productos cerámicos de alta calidad",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d32f2f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/LogoCEC_2025-2.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "manufacturing", "construction"],
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/QuienesSomosBanner.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "label": "Página principal de Cerámica El Cinco"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Bloquear ejecución de PHP bajo /media por seguridad
+  RewriteRule ^media/.*\.(php|phtml|php[0-9]+)$ - [F,NC]
+
+  # Si se solicita /media/(imagenes|videos)/... y no existe el archivo físico,
+  # delegar en el servidor de media bajo endpoints
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^/media/(imagenes|videos)/(.+)$ [NC]
+  RewriteRule ^media/(.*)$ endpoints/serve_media.php?p=$1 [L,QSA,NC]
+
+  # No reescribir si existe archivo o directorio
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA: todo lo demás a index.html
+  RewriteRule ^ index.html [L]
+</IfModule>

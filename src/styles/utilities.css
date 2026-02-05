@@ -1,0 +1,20 @@
+/* =============================
+	 UTILIDADES (globales)
+	 Propósito: Clases atómicas reutilizables; no acoplar a componentes.
+	 Reglas:
+		 - Nombres cortos y semánticos.
+		 - Evitar estilos específicos de un componente.
+		 - Usar tokens (--*) para coherencia temática.
+	 ============================= */
+
+/* LAYOUT (grillas rápidas) */
+/* grid-2: Dos columnas; gap definido por contexto que la use */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
+
+/* ASPECT RATIOS */
+/* ar-4-3: Mantiene proporción 4:3 */
+.ar-4-3 { aspect-ratio: 4/3; }
+
+/* ACCESIBILIDAD */
+/* visually-hidden: Oculta visualmente manteniendo accesibilidad */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

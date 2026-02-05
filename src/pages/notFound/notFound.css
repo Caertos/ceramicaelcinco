@@ -1,0 +1,45 @@
+/* =============================
+   NOT FOUND (404)
+   ============================= */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.not-found-container h1 {
+  font-size: var(--fs-xxl);
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.not-found-container h2 {
+  font-size: var(--fs-xl);
+  color: var(--secondary-color);
+  margin: 1rem 0;
+}
+
+.not-found-container p {
+  font-size: var(--fs-md);
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+/* Botón para volver al inicio */
+.back-home-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+}
+
+.back-home-button:hover {
+  background-color: var(--secondary-color);
+}

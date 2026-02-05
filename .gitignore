@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Backend secrets and storage
+uploads/
+endpoints/media/
+.env
+.env.*
+config.local.php
+# Nota: config.local.php debe editarse directamente en el servidor
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Generated documentation PDFs
+*.pdf
+*.txt
+PRUEBAS_FORMULARIO_CONTACTO.md
+
+# Internal documentation (not for public repo)
+README.INTERNAL.md
