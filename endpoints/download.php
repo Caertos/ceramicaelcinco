@@ -7,11 +7,9 @@ require_once __DIR__ . '/_config_loader.php';
      Diccionario:
          - Range: Cabecera solicitando bytes parciales.
          - Content-Disposition: Define inline vs attachment.
-     Parámetros (GET): id (int), dl (bool opcional), dbg (bool diagnóstico rutas).
-     Respuesta: 200/206 binario; 4xx/5xx texto plano; 500 JSON si dbg=1.
+     Parámetros (GET): id (int), dl (bool opcional).
+     Respuesta: 200/206 binario; 4xx/5xx texto plano.
      ============================================================= */
-
-$DEBUG = isset($_GET['dbg']) && ($_GET['dbg'] === '1' || $_GET['dbg'] === 'true');
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if (!$id) { http_response_code(400); exit('ID inválido'); }
@@ -52,9 +50,9 @@ foreach ($candidateRoots as $root) {
         'root' => $rootReal,
         'candidate' => $requestedPath,
         'resolved' => $real ?: null,
-        'ok' => ($real && strpos($real, $rootReal) === 0 && is_file($real))
+        'ok' => ($real && strpos($real, $rootReal . DIRECTORY_SEPARATOR) === 0 && is_file($real))
     ];
-    if ($real && strpos($real, $rootReal) === 0 && is_file($real)) {
+    if ($real && strpos($real, $rootReal . DIRECTORY_SEPARATOR) === 0 && is_file($real)) {
         $filepath = $real;
         $baseReal = $rootReal;
         break;
@@ -62,19 +60,6 @@ foreach ($candidateRoots as $root) {
 }
 
 if (!$filepath) {
-    if ($DEBUG) {
-        header('Content-Type: application/json; charset=utf-8');
-        http_response_code(500);
-        echo json_encode([
-            'error' => 'Directorio de uploads no disponible o archivo no encontrado',
-            'id' => $id,
-            'filename' => $filename,
-            'documentRoot' => $docRoot,
-            'candidateRoots' => $candidateRoots,
-            'attempts' => $attempts
-        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        exit;
-    }
     $anyRootExists = array_reduce($attempts, function($acc, $a){ return $acc || (!empty($a['root']) && !empty($a['candidate'])); }, false);
     http_response_code($anyRootExists ? 404 : 500);
     exit($anyRootExists ? 'Archivo no encontrado en el servidor' : 'Directorio de uploads no disponible');

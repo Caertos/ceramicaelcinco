@@ -86,7 +86,7 @@ foreach ($BASE_ROOTS as $root) {
   foreach ($relCandidates as $rel) {
     $candidate = $baseReal . DIRECTORY_SEPARATOR . $rel;
     $real = realpath($candidate);
-    if ($real && strpos($real, $baseReal) === 0 && is_file($real)) {
+    if ($real && strpos($real, $baseReal . DIRECTORY_SEPARATOR) === 0 && is_file($real)) {
       $filepath = $real;
       break 2;
     }
@@ -123,6 +123,8 @@ $etag = 'W/"' . md5(basename($filepath) . '|' . $mtime . '|' . $size) . '"';
 
 header('Content-Type: ' . $mime);
 header('X-Content-Type-Options: nosniff');
+// SVG puede contener scripts: aislarlo si se abre directamente (sigue renderizando en <img>)
+header("Content-Security-Policy: sandbox; default-src 'none'; style-src 'unsafe-inline'; img-src data:");
 header('Content-Disposition: inline; filename="' . basename($filepath) . '"');
 header('Last-Modified: ' . $lastModified);
 header('ETag: ' . $etag);

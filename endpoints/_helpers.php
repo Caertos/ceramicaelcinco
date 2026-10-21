@@ -86,16 +86,25 @@ function read_json_body(): array {
 
 // Nombre de la función: client_ip
 // Parámetros: (ninguno)
-// Proceso y salida: Extrae IP del cliente comprobando cabeceras de proxy/CDN en orden y valida formato.
+// Proceso y salida: Devuelve REMOTE_ADDR. Solo si la petición llega desde un proxy de confianza
+//   (IP privada/reservada o listada en TRUSTED_PROXIES, separada por comas) se aceptan cabeceras
+//   de reenvío, ya que de otro modo el cliente puede falsificarlas y evadir el rate limiting.
 function client_ip(): string {
-    $keys = ['HTTP_CF_CONNECTING_IP','HTTP_X_FORWARDED_FOR','HTTP_X_REAL_IP','REMOTE_ADDR'];
-    foreach ($keys as $k) {
+    $remote = $_SERVER['REMOTE_ADDR'] ?? '';
+    if (!filter_var($remote, FILTER_VALIDATE_IP)) return '0.0.0.0';
+
+    $trusted = array_filter(array_map('trim', explode(',', (string) getenv('TRUSTED_PROXIES'))));
+    $isTrusted = in_array($remote, $trusted, true)
+        || !filter_var($remote, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+    if (!$isTrusted) return $remote;
+
+    foreach (['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP'] as $k) {
         if (!empty($_SERVER[$k])) {
             $v = trim(explode(',', $_SERVER[$k])[0]);
             if (filter_var($v, FILTER_VALIDATE_IP)) return $v;
         }
     }
-    return '0.0.0.0';
+    return $remote;
 }
 
 // Nombre de la función: ensure_uploads_log_table
